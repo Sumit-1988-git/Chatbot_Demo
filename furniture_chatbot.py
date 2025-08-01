@@ -36,10 +36,12 @@ def get_bot_response(user_input):
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_input}
     ]
-    
-    response = openai.ChatCompletion.create(
-        model="gpt-4o",
-        messages=messages
+
+    response = client.chat.completions.create(
+        model="gpt-4",  # "gpt-4" if gpt-4o isn't available
+        messages=messages,
+        temperature=0.5,
+        max_tokens=200
     )
     return response.choices[0].message.content
 
