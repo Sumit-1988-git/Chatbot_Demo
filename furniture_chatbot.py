@@ -5,7 +5,7 @@ import openai
 import re
 
 # Initialize OpenAI API key
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+client = st.secrets["OPENAI_API_KEY"]
 
 # Guardrails: Define restricted topics or commands
 def violates_guardrails(user_input):
