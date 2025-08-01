@@ -57,14 +57,23 @@ if "chat_history" not in st.session_state:
 if "input_text" not in st.session_state:
     st.session_state.input_text = ""
 
-user_input = st.text_input("You:", value=st.session_state.input_text, key="input")
+# user_input = st.text_input("You:", value=st.session_state.input_text, key="input")
+
+# if user_input:
+#     st.session_state.chat_history.append(("user", user_input))
+#     bot_reply = get_bot_response(user_input)
+#     st.session_state.chat_history.append(("bot", bot_reply))
+#     st.session_state.input_text = ""
+#     #st.rerun()  # Prevent duplicate processing during rerender
+
+user_input = st.text_input("You:", value="", key="input")
 
 if user_input:
     st.session_state.chat_history.append(("user", user_input))
     bot_reply = get_bot_response(user_input)
     st.session_state.chat_history.append(("bot", bot_reply))
-    st.session_state.input_text = ""
-    #st.rerun()  # Prevent duplicate processing during rerender
+    # Input cleared directly via widget
+    st.rerun()  # Prevent duplicate processing during rerender
 
 # Display conversation
 for role, msg in st.session_state.chat_history:
