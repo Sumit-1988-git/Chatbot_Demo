@@ -52,6 +52,9 @@ st.markdown("Ask me about our products, designs, store hours, delivery and more!
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
+if "messages" not in st.session_state:
+    st.session_state.messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+
 for message in st.session_state.messages:
     if message["role"] != "system":  # Hide system message in chat UI
         with st.chat_message(message["role"]):
