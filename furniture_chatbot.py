@@ -64,7 +64,7 @@ if user_input:
     bot_reply = get_bot_response(user_input)
     st.session_state.chat_history.append(("bot", bot_reply))
     st.session_state.input_text = ""
-    st.rerun()  # Prevent duplicate processing during rerender
+    #st.rerun()  # Prevent duplicate processing during rerender
 
 # Display conversation
 for role, msg in st.session_state.chat_history:
