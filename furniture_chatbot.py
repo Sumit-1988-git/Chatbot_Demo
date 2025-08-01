@@ -54,15 +54,14 @@ st.markdown("Ask me about our products, designs, store hours, delivery and more!
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# Create a form to handle input submission without rerun
-with st.form(key="chat_form", clear_on_submit=True):
-    user_input = st.text_input("You:", key="input")
-    submitted = TRUE
+user_input = st.text_input("You:", key="input")
 
-if submitted and user_input:
+if user_input:
     st.session_state.chat_history.append(("user", user_input))
     bot_reply = get_bot_response(user_input)
     st.session_state.chat_history.append(("bot", bot_reply))
+    st.session_state.input = ""  # Clear the input field on next render
+    st.stop()  # Prevent duplicate processing during rerender
 
 # Display conversation
 for role, msg in st.session_state.chat_history:
