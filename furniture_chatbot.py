@@ -38,10 +38,8 @@ def get_bot_response(user_input):
     ]
     
     response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=messages,
-        temperature=0.5,
-        max_tokens=200
+        model="gpt-4o",
+        messages=messages
     )
     return response.choices[0].message.content
 
