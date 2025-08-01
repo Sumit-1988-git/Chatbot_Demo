@@ -57,16 +57,6 @@ if "chat_history" not in st.session_state:
 if "input_text" not in st.session_state:
     st.session_state.input_text = ""
 
-# user_input = st.text_input("You:", value=st.session_state.input_text, key="input")
-
-# if user_input:
-#     st.session_state.chat_history.append(("user", user_input))
-#     bot_reply = get_bot_response(user_input)
-#     st.session_state.chat_history.append(("bot", bot_reply))
-#     st.session_state.input_text = ""
-#     #st.rerun()  # Prevent duplicate processing during rerender
-
-# user_input = st.text_input("You:", value="", key="input")
 user_input = st.chat_input("How may I help you today...")
 
 if user_input:
@@ -78,6 +68,7 @@ if user_input:
 # Display conversation
 for role, msg in st.session_state.chat_history:
     if role == "user":
-        st.markdown(f"**You:** {msg}")
+        st.markdown(f"<div style='color: blue; font-weight: bold;'>You:</div><div style='margin-bottom: 1em;'>{msg}</div>", unsafe_allow_html=True)
     else:
-        st.markdown(f"**Bot:** {msg}")
+        st.markdown(f"<div style='color: green; font-weight: bold;'>Bot:</div><div style='margin-bottom: 1em;'>{msg}</div>", unsafe_allow_html=True)
+
