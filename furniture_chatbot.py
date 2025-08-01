@@ -72,8 +72,9 @@ if user_input:
     st.session_state.chat_history.append(("user", user_input))
     bot_reply = get_bot_response(user_input)
     st.session_state.chat_history.append(("bot", bot_reply))
-    # Input cleared directly via widget
-    st.rerun()  # Prevent duplicate processing during rerender
+
+# Input cleared directly via widget
+st.rerun()  # Prevent duplicate processing during rerender
 
 # Display conversation
 for role, msg in st.session_state.chat_history:
