@@ -47,3 +47,9 @@ OPENAI_API_KEY = "your-api-key"
 •	Can I get help with furniture assembly?
 
 •	What materials are your beds made of?
+
+## 🎥 Demo
+Check out the demo video showcasing the chatbot in action:
+Demo Video
+
+
