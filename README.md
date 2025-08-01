@@ -51,7 +51,16 @@ OPENAI_API_KEY = "your-api-key"
 •	What materials are your beds made of?
 
 ## 🎥 Demo
-Check out the demo video showcasing the chatbot in action:
-https://github.com/Sumit-1988-git/Chatbot_Demo/blob/main/streamlit-furniture_chatbot-2025-08-01-18-08-62.webm
+Check out the demo video showcasing the chatbot in action: [Demo Video]([url](https://github.com/Sumit-1988-git/Chatbot_Demo/blob/main/streamlit-furniture_chatbot-2025-08-01-18-08-62.webm))
+
+## ❗ Guardrails
+The chatbot will not respond to:
+
+•	Refund queries
+
+•	Offensive or abusive content
+
+•	Political or religious discussions
+
 
 
