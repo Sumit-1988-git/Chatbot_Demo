@@ -61,7 +61,7 @@ if user_input:
     bot_reply = get_bot_response(user_input)
     st.session_state.chat_history.append(("bot", bot_reply))
 
-user_input = st.text_input("You:", key="input") # Clear the input field on next render
+user_input = "" # Clear the input field on next render
 
 # Display conversation
 for role, msg in st.session_state.chat_history:
