@@ -5,7 +5,7 @@ import openai
 import re
 
 # Initialize OpenAI API key
-client = st.secrets["OPENAI_API_KEY"]
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Guardrails: Define restricted topics or commands
 def violates_guardrails(user_input):
@@ -38,9 +38,8 @@ def get_bot_response(user_input):
     ]
 
     response = client.chat.completions.create(
-        model="gpt-4",  # "gpt-4" if gpt-4o isn't available
+        model="gpt-4o",  # "gpt-4" if gpt-4o isn't available
         messages=messages,
-        temperature=0.5,
         max_tokens=200
     )
     return response.choices[0].message.content
