@@ -57,7 +57,7 @@ if "chat_history" not in st.session_state:
 # Create a form to handle input submission without rerun
 with st.form(key="chat_form", clear_on_submit=True):
     user_input = st.text_input("You:", key="input")
-    submitted = st.form_submit_button("Send")
+    submitted = TRUE
 
 if submitted and user_input:
     st.session_state.chat_history.append(("user", user_input))
