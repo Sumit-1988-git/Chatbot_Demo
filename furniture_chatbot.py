@@ -68,7 +68,7 @@ if user_input:
 # Display conversation
 for role, msg in st.session_state.chat_history:
     if role == "user":
-        st.markdown(f"<div style='color: blue; font-weight: bold;'>You:</div><div style='margin-bottom: 1em;'>{msg}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='color: yellow; font-weight: bold;'>You:</div><div style='margin-bottom: 1em;'>{msg}</div>", unsafe_allow_html=True)
     else:
         st.markdown(f"<div style='color: green; font-weight: bold;'>Bot:</div><div style='margin-bottom: 1em;'>{msg}</div>", unsafe_allow_html=True)
 
