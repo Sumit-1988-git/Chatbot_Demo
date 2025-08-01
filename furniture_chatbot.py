@@ -52,7 +52,13 @@ st.markdown("Ask me about our products, designs, store hours, delivery and more!
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-user_input = st.text_input("You:", key="input")
+for message in st.session_state.messages:
+    if message["role"] != "system":  # Hide system message in chat UI
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+#user_input = st.text_input("You:", key="input")
+user_input = st.chat_input("How may I help you today...")
 if user_input:
     st.session_state.chat_history.append(("user", user_input))
     bot_reply = get_bot_response(user_input)
