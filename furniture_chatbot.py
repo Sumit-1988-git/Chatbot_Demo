@@ -3,9 +3,10 @@
 import streamlit as st
 import openai
 import re
+from openai import OpenAI
 
-# Initialize OpenAI API key
-client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+# Initialize OpenAI client
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Guardrails: Define restricted topics or commands
 def violates_guardrails(user_input):
@@ -38,8 +39,9 @@ def get_bot_response(user_input):
     ]
 
     response = client.chat.completions.create(
-        model="gpt-4o",  # "gpt-4" if gpt-4o isn't available
+        model="gpt-4o",
         messages=messages,
+        temperature=0.5,
         max_tokens=200
     )
     return response.choices[0].message.content
@@ -51,16 +53,16 @@ st.markdown("Ask me about our products, designs, store hours, delivery and more!
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
-if "input_text" not in st.session_state:
-    st.session_state.input_text = ""
 
-user_input = st.text_input("You:", value=st.session_state.input_text, key="input")
+# Create a form to handle input submission without rerun
+with st.form(key="chat_form", clear_on_submit=True):
+    user_input = st.text_input("You:", key="input")
+    submitted = st.form_submit_button("Send")
 
-if user_input:
+if submitted and user_input:
     st.session_state.chat_history.append(("user", user_input))
     bot_reply = get_bot_response(user_input)
     st.session_state.chat_history.append(("bot", bot_reply))
-    st.session_state.input_text = ""  # Clear input
 
 # Display conversation
 for role, msg in st.session_state.chat_history:
