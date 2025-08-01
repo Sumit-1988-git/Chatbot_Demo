@@ -60,7 +60,7 @@ if user_input:
     st.session_state.chat_history.append(("user", user_input))
     bot_reply = get_bot_response(user_input)
     st.session_state.chat_history.append(("bot", bot_reply))
-    st.session_state["input"] = ""  # Clear the input field
+    st.session_state[value] = ""  # Clear the input field
     st.stop()  # Prevent duplicate processing during rerender
 
 # Display conversation
